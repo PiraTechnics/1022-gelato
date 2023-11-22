@@ -1,50 +1,23 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
-import { SITE_TITLE } from "../consts";
-//import Brand from "./Brand.astro";
-import ThemeChange from "./ThemeChange.astro";
+import { Image } from "astro:assets";
+import Logo from "../assets/1022-logo.png";
+import FBIcon from "../assets/facebook.svg";
+import IGIcon from "../assets/instagram.svg";
+import TTIcon from "../assets/tiktok.svg";
 ---
 
-<script is:inline>
-	// ☝️ This script prevent the FART effect.
-	if (localStorage.getItem("theme") === null) {
-		document.documentElement.setAttribute("data-theme", "light");
-	} else
-		document.documentElement.setAttribute(
-			"data-theme",
-			localStorage.getItem("theme")
-		);
-	// "theme" LocalStorage value is set by the package to remember user preference.
-	// The value is checked and applyed before rendering anything.
-</script>
-<script>
-	import { themeChange } from "theme-change";
-	themeChange();
-	//Note: on first load, theme defaults to night mode, regardless of browser preference
-</script>
-
 <header>
-	<nav class="flex py-2">
-		<div id="header-brand" class="flex-initial">
-			<a href="/" class="text-2xl">{SITE_TITLE}</a>
-		</div>
-		<div
-			id="desktop-menu"
-			class="flex-auto flex max-md:hidden justify-end gap-2 mx-2"
-		>
-			<HeaderLink class="px-2 py-4" href="/">Home</HeaderLink>
-			<HeaderLink class="px-2 py-4" href="/about">About</HeaderLink>
-			<HeaderLink class="px-2 py-4" href="/services">Services</HeaderLink>
-			<HeaderLink class="px-2 py-4" href="/testimonials">
-				Testimonials
-			</HeaderLink>
-			<HeaderLink class="px-2 py-4" href="/blog">Blog</HeaderLink>
-			<HeaderLink class="px-2 py-4" href="/contact">Contact</HeaderLink>
-		</div>
-		<div id="tools-menu" class="flex flex-auto justify-end">
+	<nav class="text-center p-4 w-60 max-md:w-screen">
+		<div class="max-md:flex max-md:justify-between items-center">
+			<Image
+				class="mx-auto max-md:mx-0 max-md:w-28"
+				src={Logo}
+				alt="1022 Gelato Logo"
+			/>
 			<label class="btn btn-square swap swap-rotate md:hidden">
 				<!-- this hidden checkbox controls the state -->
-				<input id="mobile-menu-toggle" type="checkbox" />
+				<input type="checkbox" id="mobile-menu-toggle" />
 
 				<!-- hamburger icon -->
 				<svg
@@ -69,45 +42,112 @@ import ThemeChange from "./ThemeChange.astro";
 					></polygon></svg
 				>
 			</label>
-			<ThemeChange />
 		</div>
 	</nav>
+
+	<div id="desktop-menu" class="max-md:hidden">
+		<div class="flex flex-col site-nav gap-6 mt-8 mb-4">
+			<HeaderLink href="/">Home</HeaderLink>
+			<HeaderLink href="/menu">Menu</HeaderLink>
+			<HeaderLink href="/about">About Us</HeaderLink>
+			<HeaderLink href="/contact">Hours & Location</HeaderLink>
+			<HeaderLink href="/feed">Photos</HeaderLink>
+		</div>
+		<div class="divider divider-neutral w-48 mx-auto"></div>
+		<div class="flex justify-center gap-2">
+			<a href="https://facebook.com/1022gelato" target="_blank" rel="noreferrer"
+				><Image src={FBIcon} alt="facebook" width={30} height={30} /></a
+			>
+			<a
+				href="https://instagram.com/1022gelato/"
+				target="_blank"
+				rel="noreferrer"
+				><Image src={IGIcon} alt="Instagram" width={30} height={30} /></a
+			>
+			<a href="https://tiktok.com/@1022gelato" target="_blank" rel="noreferrer"
+				><Image src={TTIcon} alt="Instagram" width={30} height={30} /></a
+			>
+		</div>
+	</div>
 	<div
 		id="mobile-menu"
-		class="fixed top-30 left-0 w-screen bg-secondary-content rounded flex flex-col text-center md:hidden hidden text-xl"
+		class="md:hidden hidden w-screen h-screen mb-4 p-4 fixed top-22 bg-base-300 bg-opacity-80 site-nav"
 	>
-		<HeaderLink class="py-2" href="/">Home</HeaderLink>
-		<HeaderLink class="py-2" href="/about">About</HeaderLink>
-		<HeaderLink class="py-2" href="/services">Services</HeaderLink>
-		<HeaderLink class="py-2" href="/testimonials">Testimonials</HeaderLink>
-		<HeaderLink class="py-2" href="/blog">Blog</HeaderLink>
-		<HeaderLink class="py-2" href="/contact">Contact</HeaderLink>
+		<div class="flex flex-col gap-4 mb-4 text-center text-xl">
+			<HeaderLink
+				class="py-1 rounded hover:bg-[#2F5B73] hover:text-[#E7D1B9]"
+				href="/"
+			>
+				Home
+			</HeaderLink>
+			<HeaderLink
+				class="py-1 rounded hover:bg-[#2F5B73] hover:text-[#E7D1B9]"
+				href="/menu"
+			>
+				Menu
+			</HeaderLink>
+			<HeaderLink
+				class="py-1 rounded hover:bg-[#2F5B73] hover:text-[#E7D1B9]"
+				href="/about"
+			>
+				About Us
+			</HeaderLink>
+			<HeaderLink
+				class="py-1 rounded hover:bg-[#2F5B73] hover:text-[#E7D1B9]"
+				href="/contact"
+			>
+				Hours & Location
+			</HeaderLink>
+			<HeaderLink
+				class="py-1 rounded hover:bg-[#2F5B73] hover:text-[#E7D1B9]"
+				href="/feed"
+			>
+				Photos
+			</HeaderLink>
+		</div>
+		<div class="divider w-48 mx-auto"></div>
+		<div class="flex justify-center gap-2">
+			<a href="https://facebook.com/1022gelato" target="_blank" rel="noreferrer"
+				><Image
+					src={FBIcon}
+					alt="facebook"
+					class="filter-color-primary"
+					width={30}
+					height={30}
+				/></a
+			>
+			<a
+				href="https://instagram.com/1022gelato/"
+				target="_blank"
+				rel="noreferrer"
+				><Image
+					src={IGIcon}
+					alt="Instagram"
+					class="filter-color-primary"
+					width={30}
+					height={30}
+				/></a
+			>
+			<a href="https://tiktok.com/@1022gelato" target="_blank" rel="noreferrer"
+				><Image
+					src={TTIcon}
+					alt="Instagram"
+					class="filter-color-primary"
+					width={30}
+					height={30}
+				/></a
+			>
+		</div>
 	</div>
 </header>
 
 <script is:inline>
-	// Grab HTML Elements
 	const toggle = document.querySelector("#mobile-menu-toggle");
 	const menu = document.querySelector("#mobile-menu");
 
-	//If mobile menu is open, sync toggle with it
-	if (sessionStorage.getItem("mobile-menu") !== null) {
-		if (sessionStorage.getItem("mobile-menu") === "open") {
-			menu.classList.remove("hidden");
-			toggle.checked = true;
-		} else {
-			menu.classList.add("hidden");
-			toggle.checked = false;
-		}
-		//toggle.checked = toggleInit === "open" ? true : false;
-	} else {
-		//if we haven't set it yet, default to "off"
-		//menu.classList.add("hidden");
-		sessionStorage.setItem("mobile-menu", "closed");
-	}
-
-	// Add Event Listener
 	toggle.addEventListener("change", () => {
+		/* 		menu.classList.toggle("hidden");
+		menu.classList.toggle("slidedown"); */
 		if (toggle.checked === true) {
 			//turn it all on
 			//menu.classList.remove("hide");
@@ -121,76 +161,41 @@ import ThemeChange from "./ThemeChange.astro";
 			menu.classList.add("hidden");
 			sessionStorage.setItem("mobile-menu", "closed");
 		}
-
-		/* 		menu.classList.toggle("hidden");
-		menu.classList.toggle("slide-down"); */
-
-		//sessionStorage.setItem("mobile-menu", toggle.checked ? "open" : "closed");
-
-		/* 		console.log(`Mobile menu is ${sessionStorage.getItem("mobile-menu")}`);
-		console.log(`Toggle switch is ${toggle.checked}`); */
 	});
 </script>
 
 <style>
-	header {
-		margin: 0;
-		padding: 0 1em;
-		/* background: white; */
-		box-shadow: 0 2px 8px rgba(var(--black), 5%);
+	.site-nav {
+		font-family: "Playfair Display";
+		font-size: 1rem;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		text-align: center;
 	}
-	/* 	h2 {
-		margin: 0;
-		font-size: 1em;
-	}
-
-	h2 a,
-	h2 a.active {
-		text-decoration: none;
-	} */
-	nav {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-	}
-	/* 	.social-links,
-	.social-links a {
-		display: flex;
-	}
-	@media (max-width: 720px) {
-		.social-links {
-			display: none;
-		}
-	} */
 	.slide-down {
 		animation: slidedown 400ms ease-in-out normal;
 		transform-origin: top center;
 	}
 
-	/* 	.hide {
-		transform: scaleY(0);
-		animation: slide 200ms normal;
-		transform-origin: top center;
-	}
-
-	@keyframes slide {
-		0% {
-			transform: scaleY(1);
-		}
-		100% {
-			transform: scaleY(0);
-		}
-	} */
-
 	@keyframes slidedown {
 		0% {
 			transform: scaleY(0);
 		}
-		80% {
+		/* 		80% {
 			transform: scaleY(1.1);
-		}
+		} */
 		100% {
 			transform: scaleY(1);
 		}
+	}
+
+	.filter-color-primary:hover {
+		filter: invert(32%) sepia(45%) saturate(564%) hue-rotate(157deg)
+			brightness(87%) contrast(87%);
+	}
+
+	.filter-color-secondary:hover {
+		filter: invert(96%) sepia(10%) saturate(1132%) hue-rotate(316deg)
+			brightness(94%) contrast(93%);
 	}
 </style>
