@@ -1,0 +1,196 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+import { SITE_TITLE } from "../consts";
+//import Brand from "./Brand.astro";
+import ThemeChange from "./ThemeChange.astro";
+---
+
+<script is:inline>
+	// ☝️ This script prevent the FART effect.
+	if (localStorage.getItem("theme") === null) {
+		document.documentElement.setAttribute("data-theme", "light");
+	} else
+		document.documentElement.setAttribute(
+			"data-theme",
+			localStorage.getItem("theme")
+		);
+	// "theme" LocalStorage value is set by the package to remember user preference.
+	// The value is checked and applyed before rendering anything.
+</script>
+<script>
+	import { themeChange } from "theme-change";
+	themeChange();
+	//Note: on first load, theme defaults to night mode, regardless of browser preference
+</script>
+
+<header>
+	<nav class="flex py-2">
+		<div id="header-brand" class="flex-initial">
+			<a href="/" class="text-2xl">{SITE_TITLE}</a>
+		</div>
+		<div
+			id="desktop-menu"
+			class="flex-auto flex max-md:hidden justify-end gap-2 mx-2"
+		>
+			<HeaderLink class="px-2 py-4" href="/">Home</HeaderLink>
+			<HeaderLink class="px-2 py-4" href="/about">About</HeaderLink>
+			<HeaderLink class="px-2 py-4" href="/services">Services</HeaderLink>
+			<HeaderLink class="px-2 py-4" href="/testimonials">
+				Testimonials
+			</HeaderLink>
+			<HeaderLink class="px-2 py-4" href="/blog">Blog</HeaderLink>
+			<HeaderLink class="px-2 py-4" href="/contact">Contact</HeaderLink>
+		</div>
+		<div id="tools-menu" class="flex flex-auto justify-end">
+			<label class="btn btn-square swap swap-rotate md:hidden">
+				<!-- this hidden checkbox controls the state -->
+				<input id="mobile-menu-toggle" type="checkbox" />
+
+				<!-- hamburger icon -->
+				<svg
+					class="swap-off fill-current"
+					xmlns="http://www.w3.org/2000/svg"
+					width="32"
+					height="32"
+					viewBox="0 0 512 512"
+					><path
+						d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z"
+					></path></svg
+				>
+				<!-- close icon -->
+				<svg
+					class="swap-on fill-current"
+					xmlns="http://www.w3.org/2000/svg"
+					width="32"
+					height="32"
+					viewBox="0 0 512 512"
+					><polygon
+						points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49"
+					></polygon></svg
+				>
+			</label>
+			<ThemeChange />
+		</div>
+	</nav>
+	<div
+		id="mobile-menu"
+		class="fixed top-30 left-0 w-screen bg-secondary-content rounded flex flex-col text-center md:hidden hidden text-xl"
+	>
+		<HeaderLink class="py-2" href="/">Home</HeaderLink>
+		<HeaderLink class="py-2" href="/about">About</HeaderLink>
+		<HeaderLink class="py-2" href="/services">Services</HeaderLink>
+		<HeaderLink class="py-2" href="/testimonials">Testimonials</HeaderLink>
+		<HeaderLink class="py-2" href="/blog">Blog</HeaderLink>
+		<HeaderLink class="py-2" href="/contact">Contact</HeaderLink>
+	</div>
+</header>
+
+<script is:inline>
+	// Grab HTML Elements
+	const toggle = document.querySelector("#mobile-menu-toggle");
+	const menu = document.querySelector("#mobile-menu");
+
+	//If mobile menu is open, sync toggle with it
+	if (sessionStorage.getItem("mobile-menu") !== null) {
+		if (sessionStorage.getItem("mobile-menu") === "open") {
+			menu.classList.remove("hidden");
+			toggle.checked = true;
+		} else {
+			menu.classList.add("hidden");
+			toggle.checked = false;
+		}
+		//toggle.checked = toggleInit === "open" ? true : false;
+	} else {
+		//if we haven't set it yet, default to "off"
+		//menu.classList.add("hidden");
+		sessionStorage.setItem("mobile-menu", "closed");
+	}
+
+	// Add Event Listener
+	toggle.addEventListener("change", () => {
+		if (toggle.checked === true) {
+			//turn it all on
+			//menu.classList.remove("hide");
+			menu.classList.add("slide-down");
+
+			menu.classList.remove("hidden");
+			sessionStorage.setItem("mobile-menu", "open");
+		} else {
+			menu.classList.remove("slide-down");
+			//menu.classList.add("hide");
+			menu.classList.add("hidden");
+			sessionStorage.setItem("mobile-menu", "closed");
+		}
+
+		/* 		menu.classList.toggle("hidden");
+		menu.classList.toggle("slide-down"); */
+
+		//sessionStorage.setItem("mobile-menu", toggle.checked ? "open" : "closed");
+
+		/* 		console.log(`Mobile menu is ${sessionStorage.getItem("mobile-menu")}`);
+		console.log(`Toggle switch is ${toggle.checked}`); */
+	});
+</script>
+
+<style>
+	header {
+		margin: 0;
+		padding: 0 1em;
+		/* background: white; */
+		box-shadow: 0 2px 8px rgba(var(--black), 5%);
+	}
+	/* 	h2 {
+		margin: 0;
+		font-size: 1em;
+	}
+
+	h2 a,
+	h2 a.active {
+		text-decoration: none;
+	} */
+	nav {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	/* 	.social-links,
+	.social-links a {
+		display: flex;
+	}
+	@media (max-width: 720px) {
+		.social-links {
+			display: none;
+		}
+	} */
+	.slide-down {
+		animation: slidedown 400ms ease-in-out normal;
+		transform-origin: top center;
+	}
+
+	/* 	.hide {
+		transform: scaleY(0);
+		animation: slide 200ms normal;
+		transform-origin: top center;
+	}
+
+	@keyframes slide {
+		0% {
+			transform: scaleY(1);
+		}
+		100% {
+			transform: scaleY(0);
+		}
+	} */
+
+	@keyframes slidedown {
+		0% {
+			transform: scaleY(0);
+		}
+		80% {
+			transform: scaleY(1.1);
+		}
+		100% {
+			transform: scaleY(1);
+		}
+	}
+</style>
