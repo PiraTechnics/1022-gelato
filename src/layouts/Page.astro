@@ -10,10 +10,11 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
+	<!-- <body class="flex justify-center"> -->
 	<body>
 		<div class="flex max-md:flex-col">
 			<Header class="flex-none" />
-			<main class="flex-1 h-screen border-2">
+			<main class="flex-1 h-screen">
 				<slot />
 			</main>
 		</div>

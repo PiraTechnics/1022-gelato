@@ -18,7 +18,7 @@ export default defineConfig({
 				},
 				collections: [
 					// Define a blog post collection
-					{
+					/* 					{
 						name: "posts",
 						label: "Blog Posts",
 						label_singular: "Blog Post",
@@ -52,15 +52,15 @@ export default defineConfig({
 								label: "Post Body",
 							},
 						],
-					},
+					}, */
 					{
 						label: "Pages",
 						name: "pages",
 						files: [
 							{
-								label: "Services",
-								name: "services",
-								file: "src/content/pages/services.yml",
+								label: "Home",
+								name: "home",
+								file: "src/content/pages/home.yml",
 								fields: [
 									{
 										name: "intro",
@@ -71,11 +71,6 @@ export default defineConfig({
 										name: "heroImage",
 										widget: "image",
 										label: "Featured Image",
-									},
-									{
-										name: "details",
-										widget: "markdown",
-										label: "Details",
 									},
 								],
 							},

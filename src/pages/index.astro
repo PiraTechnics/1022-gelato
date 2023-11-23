@@ -1,5 +1,17 @@
 ---
 import Layout from "../layouts/Page.astro";
+import { getEntry } from "astro:content";
+
+const home = await getEntry("pages", "home");
 ---
 
-<Layout>The Landing Page is here</Layout>
+<Layout>
+	<div class="relative text-center flex">
+		<div
+			class="absolute inset-0 top-2/4 md:text-4xl max-md:text-3xl text-neutral"
+		>
+			{home.data.intro}
+		</div>
+		<img src={home.data.heroImage} alt="Hero Image" class="flex-1" />
+	</div>
+</Layout>

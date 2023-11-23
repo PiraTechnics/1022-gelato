@@ -113,11 +113,11 @@ input {
 table {
 	width: 100%;
 }
-img {
+/* img {
 	max-width: 100%;
 	height: auto;
 	border-radius: 8px;
-}
+} */
 code {
 	padding: 2px 5px;
 	/* background-color: rgb(var(--gray-light)); */
@@ -136,18 +136,18 @@ blockquote {
 	margin: 0px;
 	font-size: 1.333em;
 }
-hr {
+/* hr {
 	border: none;
 	border-top: 1px solid rgb(var(--gray-light));
-}
-@media (max-width: 720px) {
+} */
+/* @media (max-width: 720px) {
 	body {
 		font-size: 18px;
 	}
 	main {
 		padding: 1em;
 	}
-}
+} */
 
 .sr-only {
 	border: 0;
