@@ -14,11 +14,13 @@ const blog = defineCollection({
 });
 
 const pages = defineCollection({
-	type: "data",
+	type: "content",
 	schema: z.object({
 		intro: z.string(),
-		details: z.string().optional(),
-		heroImage: z.string().optional(),
+		bannerImage: z.string(),
+		bannerImageAlt: z.string(),
+		featuredImage: z.string().optional(),
+		featuredImageAlt: z.string().optional(),
 	}),
 });
 

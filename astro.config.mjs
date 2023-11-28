@@ -56,11 +56,16 @@ export default defineConfig({
 					{
 						label: "Pages",
 						name: "pages",
+						extension: "mdx",
+						format: "frontmatter",
+						editor: {
+							preview: false,
+						},
 						files: [
 							{
 								label: "Home",
 								name: "home",
-								file: "src/content/pages/home.yml",
+								file: "src/content/pages/home.mdx",
 								fields: [
 									{
 										name: "intro",
@@ -68,9 +73,51 @@ export default defineConfig({
 										label: "Intro",
 									},
 									{
-										name: "heroImage",
+										name: "bannerImage",
 										widget: "image",
 										label: "Featured Image",
+									},
+									{
+										name: "bannerImageAlt",
+										widget: "string",
+										label: "Featured Image Alt Text",
+									},
+								],
+							},
+							{
+								label: "About Us",
+								name: "about",
+								file: "src/content/pages/about.mdx",
+								fields: [
+									{
+										name: "intro",
+										widget: "string",
+										label: "Intro",
+									},
+									{
+										name: "bannerImage",
+										widget: "image",
+										label: "Banner Image",
+									},
+									{
+										name: "bannerImageAlt",
+										widget: "string",
+										label: "Banner Image Alt Text",
+									},
+									{
+										name: "featuredImage",
+										widget: "image",
+										label: "Featured Image",
+									},
+									{
+										name: "featuredAlt",
+										widget: "string",
+										label: "Featured Image Alt Text",
+									},
+									{
+										name: "body",
+										widget: "markdown",
+										label: "Page Body",
 									},
 								],
 							},
