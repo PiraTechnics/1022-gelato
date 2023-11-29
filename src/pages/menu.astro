@@ -1,6 +1,91 @@
 ---
 import Layout from "../layouts/Page.astro";
-// Menu of items -- coffee, other beverages, and baked goods
+import { getEntry } from "astro:content";
+
+const menu = await getEntry("pages", "menu");
+const gelatoMenu = menu.data.menuList?.gelato;
+const flavorsMenu = menu.data.menuList?.flavors;
+const beverageMenu = menu.data.menuList?.beverages;
+const bakedGoodsMenu = menu.data.menuList?.bakedgoods;
 ---
 
-<Layout>The Coffee, drink and baked goods menu goes here</Layout>
+<Layout>
+	<div class="text-center flex flex-col">
+		<img
+			src={menu.data.bannerImage}
+			alt={menu.data.bannerImageAlt}
+			class="max-h-min p-1"
+		/>
+		<div class="md:text-4xl max-md:text-4xl text-neutral underline mt-4">
+			{menu.data.intro}
+		</div>
+		<div class="mt-8">
+			<div
+				class="grid grid-cols-2 grid-rows-2 max-sm:grid-cols-1 max-sm:grid-rows-4 grid-flow-col gap-y-4 gap-x-16 mx-8"
+			>
+				<ul class="max-sm:w-2/3 max-sm:justify-self-center">
+					<li class="text-3xl underline italic py-4">Gelato</li>
+					{
+						gelatoMenu?.map((item) => {
+							return (
+								<li class="flex justify-between gap-2">
+									<span>
+										{item.item}
+										{item.subtext && " (" + item.subtext + ")"}
+									</span>
+									<span>{item.price}</span>
+								</li>
+							);
+						})
+					}
+				</ul>
+				<ul class="max-sm:w-2/3 max-sm:justify-self-center">
+					<li class="text-2xl underline italic py-4">Rotating Flavors</li>
+					{
+						flavorsMenu?.map((item) => {
+							return (
+								<li class="flex justify-between gap-2">
+									<span>{item.item}</span>
+									{item.subtext && <span>({item.subtext})</span>}
+								</li>
+							);
+						})
+					}
+				</ul>
+				<ul class="max-sm:w-2/3 max-sm:justify-self-center">
+					<li class="text-3xl underline italic py-4">Coffee</li>
+					{
+						beverageMenu?.map((item) => {
+							return (
+								<li class="flex justify-between gap-2">
+									<span>
+										{item.item}
+										{item.subtext && " (" + item.subtext + ")"}
+									</span>
+
+									<span>{item.price}</span>
+								</li>
+							);
+						})
+					}
+				</ul>
+				<ul class="max-sm:w-2/3 max-sm:justify-self-center">
+					<li class="text-3xl underline italic py-4">Baked Goods</li>
+					{
+						bakedGoodsMenu?.map((item) => {
+							return (
+								<li class="flex justify-between gap-2">
+									<span>
+										{item.item}
+										{item.subtext && " (" + item.subtext + ")"}
+									</span>
+									<span>{item.price}</span>
+								</li>
+							);
+						})
+					}
+				</ul>
+			</div>
+		</div>
+	</div>
+</Layout>

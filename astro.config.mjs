@@ -85,6 +85,134 @@ export default defineConfig({
 								],
 							},
 							{
+								label: "Menu",
+								name: "menu",
+								file: "src/content/pages/menu.mdx",
+								fields: [
+									{
+										name: "intro",
+										widget: "string",
+										label: "Intro",
+									},
+									{
+										name: "bannerImage",
+										widget: "image",
+										label: "Banner Image",
+									},
+									{
+										name: "bannerImageAlt",
+										widget: "string",
+										label: "Banner Image Alt Text",
+									},
+									{
+										label: "Menu",
+										name: "menuList",
+										widget: "object",
+										collapsed: true,
+										fields: [
+											{
+												label: "Gelato",
+												name: "gelato",
+												widget: "list",
+												minimize_collapsed: true,
+												summary: "{{fields.item}}: {{fields.price}}",
+												fields: [
+													{
+														label: "Item",
+														name: "item",
+														widget: "string",
+													},
+													{
+														label: "Price",
+														name: "price",
+														widget: "string",
+													},
+													{
+														label: "Subtext",
+														name: "subtext",
+														widget: "string",
+														required: false,
+													},
+												],
+											},
+											{
+												label: "Gelato Flavors",
+												label_singular: "Gelato Flavor",
+												name: "flavors",
+												widget: "list",
+												minimize_collapsed: true,
+												summary: "{{fields.item}}",
+												fields: [
+													{
+														label: "Item",
+														name: "item",
+														widget: "string",
+													},
+													{
+														label: "Subtext",
+														name: "subtext",
+														widget: "string",
+														required: false,
+													},
+												],
+											},
+											{
+												label: "Beverages",
+												label_singular: "Beverage",
+												name: "beverages",
+												widget: "list",
+												minimize_collapsed: true,
+												summary: "{{fields.item}}: {{fields.price}}",
+												fields: [
+													{
+														label: "Item",
+														name: "item",
+														widget: "string",
+													},
+													{
+														label: "Price",
+														name: "price",
+														widget: "string",
+													},
+													{
+														label: "Subtext",
+														name: "subtext",
+														widget: "string",
+														required: false,
+													},
+												],
+											},
+											{
+												label: "Baked Goods",
+												label_singular: "Baked Good",
+												name: "bakedgoods",
+												widget: "list",
+												minimize_collapsed: true,
+												summary: "{{fields.item}}: {{fields.price}}",
+												fields: [
+													{
+														label: "Item",
+														name: "item",
+														widget: "string",
+													},
+													{
+														label: "Price",
+														name: "price",
+														widget: "string",
+													},
+													{
+														label: "Subtext",
+														name: "subtext",
+														widget: "string",
+														required: false,
+													},
+												],
+											},
+										],
+									},
+								],
+							},
+							{
 								label: "About Us",
 								name: "about",
 								file: "src/content/pages/about.mdx",
