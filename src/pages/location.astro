@@ -1,0 +1,23 @@
+---
+import Layout from "../layouts/Page.astro";
+import { getEntry } from "astro:content";
+
+const location = await getEntry("pages", "location");
+//const { Content } = await location.render();
+// Hours and Location - map and times
+---
+
+<Layout>
+	<div class="relative text-center flex">
+		<div
+			class="absolute inset-0 top-2/4 lg:text-5xl md:text-4xl max-md:text-3xl text-base-100"
+		>
+			{location.data.intro}
+		</div>
+		<img
+			src={location.data.bannerImage}
+			alt={location.data.bannerImageAlt}
+			class="flex-1"
+		/>
+	</div>
+</Layout>

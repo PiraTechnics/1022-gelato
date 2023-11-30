@@ -3,7 +3,7 @@ import Layout from "../layouts/Page.astro";
 import { getEntry } from "astro:content";
 
 const home = await getEntry("pages", "home");
-const { Content } = await home.render();
+//const { Content } = await home.render();
 ---
 
 <Layout>
@@ -18,6 +18,5 @@ const { Content } = await home.render();
 			alt={home.data.bannerImageAlt}
 			class="flex-1"
 		/>
-		<Content />
 	</div>
 </Layout>

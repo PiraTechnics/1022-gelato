@@ -249,6 +249,28 @@ export default defineConfig({
 									},
 								],
 							},
+							{
+								label: "Hours & Location",
+								name: "location",
+								file: "src/content/pages/location.mdx",
+								fields: [
+									{
+										name: "intro",
+										widget: "string",
+										label: "Intro",
+									},
+									{
+										name: "bannerImage",
+										widget: "image",
+										label: "Banner Image",
+									},
+									{
+										name: "bannerImageAlt",
+										widget: "string",
+										label: "Banner Image Alt Text",
+									},
+								],
+							},
 						],
 					},
 				],
