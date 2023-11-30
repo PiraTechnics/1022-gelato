@@ -3,8 +3,11 @@ import Layout from "../layouts/Page.astro";
 import { getEntry } from "astro:content";
 
 const location = await getEntry("pages", "location");
-//const { Content } = await location.render();
+const contact = location.data.contact;
+const { Content } = await location.render();
 // Hours and Location - map and times
+const formattedAddress = contact?.address.replace(" ", "+");
+const mapSrc = `https://maps.google.com/maps?hl=en&q=${formattedAddress}&t=&z=14&ie=UTF8&iwloc=B&output=embed`;
 ---
 
 <Layout>
@@ -19,5 +22,28 @@ const location = await getEntry("pages", "location");
 			alt={location.data.bannerImageAlt}
 			class="flex-1"
 		/>
+	</div>
+	<div
+		class="p-4 text-center grid grid-cols-2 grid-rows-1 max-sm:grid-rows-2 max-sm:grid-cols-1"
+	>
+		<div>
+			<h3 class="underline italic">Open</h3>
+			<Content />
+		</div>
+		{
+			contact && (
+				<div>
+					<h3 class="underline italic">Address</h3>
+					<p class="text-lg italic">{contact?.address}</p>
+					<h3 class="underline italic">Email</h3>
+					<p class="text-lg italic">{contact?.email}</p>
+					<h3 class="underline italic">Phone</h3>
+					<p class="text-lg italic">{contact?.phone}</p>
+				</div>
+			)
+		}
+	</div>
+	<div class="p-4">
+		<iframe class="rounded-lg w-full h-[600px]" src={mapSrc}></iframe>
 	</div>
 </Layout>

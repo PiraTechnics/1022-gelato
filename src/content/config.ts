@@ -52,6 +52,13 @@ const pages = defineCollection({
 				),
 			})
 			.optional(),
+		contact: z
+			.object({
+				address: z.string(),
+				email: z.string().email(),
+				phone: z.string(),
+			})
+			.optional(),
 	}),
 });
 

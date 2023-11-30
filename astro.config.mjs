@@ -269,6 +269,34 @@ export default defineConfig({
 										widget: "string",
 										label: "Banner Image Alt Text",
 									},
+									{
+										name: "contact",
+										widget: "object",
+										label: "Contact Info",
+										minimize_collapsed: true,
+										fields: [
+											{
+												name: "address",
+												widget: "string",
+												label: "Address",
+											},
+											{
+												name: "email",
+												widget: "string",
+												label: "Email",
+											},
+											{
+												name: "phone",
+												widget: "string",
+												label: "Phone Number",
+											},
+										],
+									},
+									{
+										name: "body",
+										widget: "markdown",
+										label: "Opening Hours",
+									},
 								],
 							},
 						],
