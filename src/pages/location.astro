@@ -11,17 +11,18 @@ const mapSrc = `https://maps.google.com/maps?hl=en&q=${formattedAddress}&t=&z=14
 ---
 
 <Layout>
-	<div class="relative text-center flex">
-		<div
-			class="absolute inset-0 top-2/4 lg:text-5xl md:text-4xl max-md:text-3xl text-base-100"
-		>
-			{location.data.intro}
-		</div>
+	<div class="hero">
 		<img
 			src={location.data.bannerImage}
 			alt={location.data.bannerImageAlt}
 			class="flex-1"
 		/>
+		<div class="hero-overlay bg-opacity-50"></div>
+		<div class="hero-content text-center text-neutral-content">
+			<div class="lg:text-5xl md:text-4xl max-md:text-3xl">
+				{location.data.intro}
+			</div>
+		</div>
 	</div>
 	<div
 		class="p-4 text-center grid grid-cols-2 grid-rows-1 max-sm:grid-rows-2 max-sm:grid-cols-1"
