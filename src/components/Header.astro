@@ -56,16 +56,34 @@ import TTIcon from "../assets/tiktok.svg";
 		<div class="divider divider-neutral w-48 mx-auto"></div>
 		<div class="flex justify-center gap-2">
 			<a href="https://facebook.com/1022gelato" target="_blank" rel="noreferrer"
-				><Image src={FBIcon} alt="facebook" width={30} height={30} /></a
+				><Image
+					src={FBIcon}
+					alt="facebook"
+					width={30}
+					height={30}
+					class="filter-color-primary"
+				/></a
 			>
 			<a
 				href="https://instagram.com/1022gelato/"
 				target="_blank"
 				rel="noreferrer"
-				><Image src={IGIcon} alt="Instagram" width={30} height={30} /></a
+				><Image
+					src={IGIcon}
+					alt="Instagram"
+					width={30}
+					height={30}
+					class="filter-color-primary"
+				/></a
 			>
 			<a href="https://tiktok.com/@1022gelato" target="_blank" rel="noreferrer"
-				><Image src={TTIcon} alt="Instagram" width={30} height={30} /></a
+				><Image
+					src={TTIcon}
+					alt="Tiktok"
+					width={30}
+					height={30}
+					class="filter-color-primary"
+				/></a
 			>
 		</div>
 	</div>
@@ -94,7 +112,7 @@ import TTIcon from "../assets/tiktok.svg";
 			</HeaderLink>
 			<HeaderLink
 				class="py-1 rounded hover:bg-[#2F5B73] hover:text-[#E7D1B9]"
-				href="/contact"
+				href="/location"
 			>
 				Hours & Location
 			</HeaderLink>
@@ -155,11 +173,15 @@ import TTIcon from "../assets/tiktok.svg";
 
 			menu.classList.remove("hidden");
 			sessionStorage.setItem("mobile-menu", "open");
+			//now disable scrolling on the main body
+			document.body.style.position = "fixed";
 		} else {
 			menu.classList.remove("slide-down");
 			//menu.classList.add("hide");
 			menu.classList.add("hidden");
 			sessionStorage.setItem("mobile-menu", "closed");
+			//now enable scrolling on the main body
+			document.body.style.position = "";
 		}
 	});
 </script>
