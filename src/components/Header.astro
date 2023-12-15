@@ -46,14 +46,17 @@ import TTIcon from "../assets/tiktok.svg";
 	</nav>
 
 	<div id="desktop-menu" class="max-md:hidden">
-		<div class="flex flex-col site-nav gap-6 mt-8 mb-4">
+		<div class="flex flex-col site-nav gap-2 mt-8 mb-10">
 			<HeaderLink href="/">Home</HeaderLink>
+			<div class="divider w-32 mx-auto my-0"></div>
 			<HeaderLink href="/menu">Menu</HeaderLink>
+			<div class="divider w-32 mx-auto my-0"></div>
 			<HeaderLink href="/about">About Us</HeaderLink>
+			<div class="divider w-32 mx-auto my-0"></div>
 			<HeaderLink href="/location">Hours & Location</HeaderLink>
+			<div class="divider w-32 mx-auto my-0"></div>
 			<HeaderLink href="/feed">Photos</HeaderLink>
 		</div>
-		<div class="divider divider-neutral w-48 mx-auto"></div>
 		<div class="flex justify-center gap-2">
 			<a href="https://facebook.com/1022gelato" target="_blank" rel="noreferrer"
 				><Image
@@ -91,31 +94,35 @@ import TTIcon from "../assets/tiktok.svg";
 		id="mobile-menu"
 		class="md:hidden hidden w-screen h-screen mb-4 p-4 fixed top-22 bg-neutral-content site-nav z-10"
 	>
-		<div class="flex flex-col gap-4 mb-4 text-center text-xl">
+		<div class="flex flex-col mb-8 gap-1 text-center text-xl">
 			<HeaderLink
 				class="py-1 rounded hover:bg-[#2F5B73] hover:text-[#E7D1B9]"
 				href="/"
 			>
 				Home
 			</HeaderLink>
+			<div class="divider divider-neutral w-60 mx-auto my-0"></div>
 			<HeaderLink
 				class="py-1 rounded hover:bg-[#2F5B73] hover:text-[#E7D1B9]"
 				href="/menu"
 			>
 				Menu
 			</HeaderLink>
+			<div class="divider divider-neutral w-60 mx-auto my-0"></div>
 			<HeaderLink
 				class="py-1 rounded hover:bg-[#2F5B73] hover:text-[#E7D1B9]"
 				href="/about"
 			>
 				About Us
 			</HeaderLink>
+			<div class="divider divider-neutral w-60 mx-auto my-0"></div>
 			<HeaderLink
 				class="py-1 rounded hover:bg-[#2F5B73] hover:text-[#E7D1B9]"
 				href="/location"
 			>
 				Hours & Location
 			</HeaderLink>
+			<div class="divider divider-neutral w-60 mx-auto my-0"></div>
 			<HeaderLink
 				class="py-1 rounded hover:bg-[#2F5B73] hover:text-[#E7D1B9]"
 				href="/feed"
@@ -123,7 +130,6 @@ import TTIcon from "../assets/tiktok.svg";
 				Photos
 			</HeaderLink>
 		</div>
-		<div class="divider w-48 mx-auto"></div>
 		<div class="flex justify-center gap-2">
 			<a href="https://facebook.com/1022gelato" target="_blank" rel="noreferrer"
 				><Image
