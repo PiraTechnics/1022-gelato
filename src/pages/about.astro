@@ -12,19 +12,19 @@ const { Content } = await about.render();
 		<img
 			src={about.data.bannerImage}
 			alt={about.data.bannerImageAlt}
-			class="max-h-min p-1"
+			class="max-h-min pt-2 pe-2"
 		/>
-		<div class="md:text-4xl max-md:text-3xl text-neutral underline">
-			{about.data.intro}
-		</div>
 
-		<div class="flex mt-8 max-lg:flex-col">
+		<div class="flex max-lg:flex-col">
 			<img
 				src={about.data.featuredImage}
 				alt={about.data.featuredImageAlt}
-				class="object-scale-down object-top max-sm:hidden max-lg:max-w-lg max-lg:mx-auto max-w-sm"
+				class="object-scale-down object-top max-md:hidden max-lg:pe-2 lg:max-w-md"
 			/>
-			<div class="p-4">
+			<div class="p-4 px-24">
+				<div class="md:text-4xl max-md:text-3xl text-neutral underline p-8">
+					{about.data.intro}
+				</div>
 				<Content />
 			</div>
 		</div>
