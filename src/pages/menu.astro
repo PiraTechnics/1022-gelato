@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Page.astro";
 import { getEntry } from "astro:content";
+import Footer from "../components/Footer.astro";
 
 const menu = await getEntry("pages", "menu");
 const gelatoMenu = menu.data.menuList?.gelato;
@@ -90,4 +91,5 @@ const bakedGoodsMenu = menu.data.menuList?.bakedgoods;
 			</div>
 		</div>
 	</div>
+	<Footer />
 </Layout>
