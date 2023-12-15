@@ -52,8 +52,10 @@ body {
 	/* 	font-size: 20px;
 	line-height: 1.7; */
 	/* font-family: "Allura", cursive; */
-	font-family: "Metamorphous", serif;
-	font-family: "Playfair Display", serif;
+	/* font-family: "Metamorphous", serif; */
+
+	font-family: "PT Sans", Arial, Helvetica, sans-serif;
+	/* font-family: "Playfair Display", serif; */
 }
 
 /* main {
